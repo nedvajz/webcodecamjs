@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * WebCodeCamJQuery 2.5.0 jQuery plugin Bar code and QR code decoder
+=======
+ * WebCodeCamJQuery 2.7.0 jQuery plugin Bar code and QR code decoder
+>>>>>>> refs/remotes/origin/master
  * Author: Tóth András
  * Web: http://atandrastoth.co.uk
  * email: atandrastoth@gmail.com
@@ -459,17 +463,29 @@
         if (videoSelect && videoSelect.children().length !== 0) {
             switch (videoSelect.val().toString()) {
                 case 'true':
-                    constraints.video.optional = [{
-                        sourceId: true
-                    }];
+                    if (navigator.userAgent.search("Edge") == -1 && navigator.userAgent.search("Chrome") != -1) {
+                        constraints.video.optional = [{
+                            sourceId: true
+                        }];
+                    } else {
+                        constraints.video.deviceId = undefined;  
+                    }
                     break;
                 case 'false':
                     constraints.video = false;
                     break;
                 default:
-                    constraints.video.optional = [{
-                        sourceId: videoSelect.val()
-                    }];
+                    if (navigator.userAgent.search("Edge") == -1 && navigator.userAgent.search("Chrome") != -1) {
+                        constraints.video.optional = [{
+                            sourceId: videoSelect[videoSelect.selectedIndex].value
+                        }];
+                    } else if (navigator.userAgent.search("Firefox") != -1) {
+                        constraints.video.deviceId = {
+                            exact: videoSelect.val()
+                        };
+                    } else {
+                         constraints.video.deviceId = videoSelect.val();
+                    }
                     break;
             }
         }
