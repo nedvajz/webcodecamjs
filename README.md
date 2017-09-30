@@ -23,6 +23,13 @@ Advantages compared to the previous version:<br>
 Version
 ----
 
+2.7.0
+
+    - Extend Browser compatibility
+
+Version
+----
+
 2.1.0
 
     - Extend BuildSelectMenu function

@@ -1,5 +1,5 @@
 /*!
- * WebCodeCamJS 2.5.0 javascript Bar code and QR code decoder 
+ * WebCodeCamJS 2.7.0 javascript Bar code and QR code decoder 
  * Author: Tóth András
  * Web: http://atandrastoth.co.uk
  * email: atandrastoth@gmail.com
@@ -9,7 +9,7 @@ var WebCodeCamJS = function(element) {
     'use strict';
     this.Version = {
         name: 'WebCodeCamJS',
-        version: '2.5.0',
+        version: '2.7.0',
         author: 'Tóth András',
     };
     var mediaDevices = window.navigator.mediaDevices;
@@ -450,17 +450,29 @@ var WebCodeCamJS = function(element) {
         if (videoSelect && videoSelect.length !== 0) {
             switch (videoSelect[videoSelect.selectedIndex].value.toString()) {
                 case 'true':
-                    constraints.video.optional = [{
-                        sourceId: true
-                    }];
+                    if (navigator.userAgent.search("Edge") == -1 && navigator.userAgent.search("Chrome") != -1) {
+                        constraints.video.optional = [{
+                            sourceId: true
+                        }];
+                    } else {
+                        constraints.video.deviceId = undefined;  
+                    }
                     break;
                 case 'false':
                     constraints.video = false;
                     break;
                 default:
-                    constraints.video.optional = [{
-                        sourceId: videoSelect[videoSelect.selectedIndex].value
-                    }];
+                    if (navigator.userAgent.search("Edge") == -1 && navigator.userAgent.search("Chrome") != -1) {
+                        constraints.video.optional = [{
+                            sourceId: videoSelect[videoSelect.selectedIndex].value
+                        }];
+                    } else if (navigator.userAgent.search("Firefox") != -1) {
+                        constraints.video.deviceId = {
+                            exact: videoSelect[videoSelect.selectedIndex].value
+                        };
+                    } else {
+                         constraints.video.deviceId = videoSelect[videoSelect.selectedIndex].value;
+                    }
                     break;
             }
         }
