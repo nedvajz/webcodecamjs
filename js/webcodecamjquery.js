@@ -473,7 +473,7 @@
                 default:
                     if (navigator.userAgent.search("Edge") == -1 && navigator.userAgent.search("Chrome") != -1) {
                         constraints.video.optional = [{
-                            sourceId: videoSelect[videoSelect.selectedIndex].value
+                            sourceId: videoSelect.val()
                         }];
                     } else if (navigator.userAgent.search("Firefox") != -1) {
                         constraints.video.deviceId = {
