@@ -1,0 +1,30 @@
+{
+  "name": "webcodecamjs",
+  "version": "2.7.0",
+  "description": "bercode qrode decoder",
+  "author": {
+    "name": "Tóth András"
+  },
+  "main": "index.html",
+  "keywords": [
+    "barcode",
+    "qrcode",
+    "webcamera",
+    "decoding",
+    "reading"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/andrastoth/webcodecamjs#readme",
+  "bugs": {
+    "url": "https://github.com/andrastoth/webcodecamjs/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrastoth/webcodecamjs.git"
+  },
+  "deprecated": false,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bundleDependencies": false
+}

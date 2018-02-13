@@ -1,3 +1,15 @@
+Atandras Toth version with package.json
+===============================
+more here: https://andrastoth.github.io/webcodecamjs/  
+  
+Install:  
+```sh
+npm install --save https://github.com/nedvajz/webcodecamjs/tarball/master
+```
+    
+
+
+
 WebCodeCamJS & WebCodeCamJQuery
 ===============================
 
